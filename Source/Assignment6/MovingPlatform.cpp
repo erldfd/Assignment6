@@ -6,6 +6,8 @@ AMovingPlatform::AMovingPlatform()
 
 	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	ensure(MeshComp);
+
+	SetRootComponent(MeshComp);
 }
 
 void AMovingPlatform::BeginPlay()
