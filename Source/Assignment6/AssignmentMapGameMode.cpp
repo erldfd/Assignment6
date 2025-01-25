@@ -13,7 +13,13 @@ void AAssignmentMapGameMode::BeginPlay()
 
 	FTimerHandle TimerHandle;
 	//GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AAssignmentMapGameMode::SpawnPlatforms, 3, true);
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AAssignmentMapGameMode::SpawnPlatform, 1, true);
+
+	for (int i = 0; i < TotalSpawnCount; ++i)
+	{
+		SpawnPlatform();
+	}
+
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AAssignmentMapGameMode::SpawnPlatform, 0.2, true);
 
 	DeactivatedPlatform = GetWorld()->SpawnActor<AMovingPlatform>(Model);
 	DeactivatedPlatform->SetActorEnableCollision(false);
